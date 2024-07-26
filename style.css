@@ -1,0 +1,43 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+.text {
+  font-size: 20px;
+}
+
+.text-small{
+  font-size: 14px;
+}
+
+.video-buttons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.video-button {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.video-button:hover {
+  background-color: darkgreen;
+}

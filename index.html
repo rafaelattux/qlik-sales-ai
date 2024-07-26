@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qlik SalesAI</title>
+
+    <!-- ******** Data Host and Client ID Params ******** -->
+    <script
+      crossorigin="anonymous"
+      type="application/javascript"
+      src="https://cdn.jsdelivr.net/npm/@qlik/embed-web-components"
+      data-host="v_data_host"
+      data-client-id="v_client_id"
+      data-redirect-uri="v_data_redirect_uri"
+      data-access-token-storage="session"
+    ></script>
+
+    <!-- *********************************************** -->
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="video-buttons">
+        <button class="video-button" onclick="playVideo1()">
+          Qlik Answers Intro
+        </button>
+        <button class="video-button" onclick="playVideo2()">
+          Product Demo
+        </button>
+      </div>
+
+      <div class="container">
+        <img src="img/qlik_logo.png" alt="Qlik Logo" class="logo" />
+        <div class="text">Qlik SalesAI</div>
+      </div>
+
+      <qlik-embed
+        ui="private:@qmfe/assistant-ui#AssistantChatEmbedded"
+        assistant-id="v_assistant_id"
+        dark-theme="false"
+        expanded="false"
+      ></qlik-embed>
+
+      <div class="container" style="margin-top: 15px">
+        <div class="text-small">
+          Disclaimer: SalesAI is an artificial intelligence (AI) tool and there
+          is a possibility that its output may be inaccurate and/or
+          confidential. You may not share the output of this tool externally
+          until you have verified that the output is accurate and
+          non-confidential by checking the cited references.
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function playVideo1() {
+        window.open(
+          "https://www.youtube.com/watch?v=dKlStbslh6I&feature=youtu.be",
+          "_blank",
+        );
+      }
+      function playVideo2() {
+        window.open(
+          "https://videos.qlik.com/watch/tt7qzcnZbA5FJGKySbV4pG?",
+          "_blank",
+        );
+      }
+    </script>
+  </body>
+</html>
