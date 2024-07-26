@@ -8,11 +8,6 @@ def index():
    print('Request for index page received')
    return app.send_static_file('index.html')
 
-@app.route('/oauth_callback.html')
-def index():
-   print('Request for oauth_callback page received')
-   return app.send_static_file('oauth_callback.html')
-
 
 if __name__ == '__main__':
    app.run(threaded=True, port=8000)
