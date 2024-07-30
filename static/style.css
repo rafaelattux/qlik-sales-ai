@@ -59,8 +59,6 @@ body {
   background-color: darkgreen;
 }
 
-/*----------------- TOGGLE ----------------------*/
-
 .switch-container {
   display: flex;
   align-items: center;
@@ -123,3 +121,4 @@ input:checked+.slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
