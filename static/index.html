@@ -7,7 +7,7 @@
     <link rel="icon" href="img/qlik_fav_icon.png" type="image/png" />
 
     <!-- ******** Data Host and Client ID Params ******** -->
-	  <script
+    <script
       crossorigin="anonymous"
       type="application/javascript"
       src="https://cdn.jsdelivr.net/npm/@qlik/embed-web-components@1/dist/index.min.js"
@@ -30,15 +30,14 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body>
+   <body>
     <div class="content">
       <div class="top-bar">
-
-        <div class="logo-text">
+        <div class="container">
           <img src="img/qlik_logo.png" alt="Qlik Logo" class="logo" />
           <div class="text">Qlik SalesAI</div>
         </div>
-        
+
         <div class="video-buttons">
           <button class="video-button" onclick="playVideo1()">
             Qlik Answers Intro
@@ -47,10 +46,11 @@
             Product Demo
           </button>
         </div>
+
         <div class="switch-container">
           <span class="switch-label">Internal Version</span>
           <label class="switch">
-            <input type="checkbox" id="toggle-switch" onclick="toggleDivs()">
+            <input type="checkbox" id="toggle-switch" onclick="toggleDivs()" />
             <span class="slider round"></span>
           </label>
           <span class="switch-label">Demo Version</span>
