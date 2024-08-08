@@ -7,6 +7,20 @@ body {
   align-items: center;
 }
 
+#assistant-oficial {
+  width: 100%;
+  /* Full width of the screen */
+  height: 78vh;
+  /* 78% of the viewport height */
+}
+
+#assistant-demo {
+  width: 100%;
+  /* Full width of the screen */
+  height: 78vh;
+  /* 78% of the viewport height */
+}
+
 .logo {
   width: 150px;
   height: auto;
