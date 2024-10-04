@@ -21,6 +21,8 @@
 
     <!-- *********************************************** -->
 
+    <!-- *********************************************** -->
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
@@ -59,9 +61,9 @@
       </div>
 
       <!-------------------------------------------------------------->
-      <!-- Oficial SalesAI Assistant -->
+      <!-- Official SalesAI Assistant -->
 
-      <div id="assistant-oficial">
+      <div id="assistant-official" class="assistant active">
         <qlik-embed
           ui="private:@qmfe/assistant-ui#AssistantChatEmbedded"
           assistant-id="7b429d79-e999-437a-a732-6c0b6e9d6a02"
@@ -71,22 +73,19 @@
 
       <!-- DEMO SalesAI Assistant -->
 
-      <div id="assistant-demo" style="display: none">
+      <div id="assistant-demo" class="assistant hidden">
         <qlik-embed
           ui="private:@qmfe/assistant-ui#AssistantChatEmbedded"
           assistant-id="7ff40ae7-f749-4f89-a127-addc369385ae"
           expanded="true"
           appearance="qlik-dark"
-        ></qlik-embed>
+        </qlik-embed>
       </div>
 
       <!-------------------------------------------------------------->
 
-      <div id="hidden-div" style="display: none">
-        <qlik-embed ui="classic/chart"></qlik-embed>
-      </div>
 
-      <div class="container" style="margin-top: 15px">
+      <div class="container" style="margin-top: 15px;>
         <div class="text-small">
           Disclaimer: SalesAI is an artificial intelligence (AI) tool and there
           is a possibility that its output may be inaccurate and/or
@@ -121,16 +120,24 @@
       }
 
       function toggleDivs() {
-        var officialDiv = document.getElementById("assistant-oficial");
-        var demoDiv = document.getElementById("assistant-demo");
-        if (document.getElementById("toggle-switch").checked) {
-          officialDiv.style.display = "none";
-          demoDiv.style.display = "block";
-        } else {
-          officialDiv.style.display = "block";
-          demoDiv.style.display = "none";
-        }
+          var officialDiv = document.getElementById("assistant-official");
+          var demoDiv = document.getElementById("assistant-demo");
+
+          if (document.getElementById("toggle-switch").checked) {
+              // Show DEMO and hide official
+              officialDiv.classList.remove('active');
+              officialDiv.classList.add('hidden');
+              demoDiv.classList.remove('hidden');
+              demoDiv.classList.add('active');
+          } else {
+              // Show OFFICIAL and hide demo
+              officialDiv.classList.remove('hidden');
+              officialDiv.classList.add('active');
+              demoDiv.classList.remove('active');
+              demoDiv.classList.add('hidden');
+          }
       }
+     
     </script>
   </body>
 </html>
