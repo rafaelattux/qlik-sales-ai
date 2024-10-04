@@ -38,7 +38,7 @@
           <div class="text">Qlik SalesAI</div>
         </div>
 
-        <div class="video-buttons" style="display: none">
+        <div class="video-buttons">
           <button class="video-button" onclick="playVideo1()">
             Demo Guide
           </button>
@@ -50,7 +50,7 @@
           </button>
         </div>
 
-        <div class="switch-container" style="display: none">
+        <div class="switch-container">
           <span class="switch-label">Internal Version</span>
           <label class="switch">
             <input type="checkbox" id="toggle-switch" onclick="toggleDivs()" />
@@ -61,9 +61,9 @@
       </div>
 
       <!-------------------------------------------------------------->
-      <!-- Oficial SalesAI Assistant -->
+      <!-- Official SalesAI Assistant -->
 
-      <div id="assistant-oficial" class="assistant active">
+      <div id="assistant-official" class="assistant active">
         <qlik-embed
           ui="private:@qmfe/assistant-ui#AssistantChatEmbedded"
           assistant-id="7b429d79-e999-437a-a732-6c0b6e9d6a02"
@@ -84,11 +84,7 @@
 
       <!-------------------------------------------------------------->
 
-      <div id="hidden-div" style="display: none">
-        <qlik-embed ui="classic/chart"></qlik-embed>
-      </div>
-
-      <div class="container" style="margin-top: 15px; display: none;>
+      <div class="container" style="margin-top: 15px;>
         <div class="text-small">
           Disclaimer: SalesAI is an artificial intelligence (AI) tool and there
           is a possibility that its output may be inaccurate and/or
@@ -123,7 +119,7 @@
       }
 
       function toggleDivs() {
-          var officialDiv = document.getElementById("assistant-oficial");
+          var officialDiv = document.getElementById("assistant-official");
           var demoDiv = document.getElementById("assistant-demo");
 
           if (document.getElementById("toggle-switch").checked) {
