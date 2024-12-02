@@ -1,122 +1,392 @@
 <!doctype html>
 <html>
   <head>
+
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .column {
+      float: left;
+      align-content: center;
+      width: 33.33%;
+      padding: 5px;
+    }
+
+    /* Clearfix (clear floats) */
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    </style>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Qlik SalesAI</title>
     <link rel="icon" href="img/qlik_fav_icon.png" type="image/png" />
-
-    <!-- ******** Data Host and Client ID Params CHANGE TO TEST GITHUB ******** -->
+    
+    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="css/Style.css"> <!-- Style -->
+    <link rel="stylesheet" href="css/Modals.css"> <!-- Modal -->
+    <link rel="stylesheet" href="css/Menu.css"> <!-- CSS menu -->
+    <link rel="stylesheet" href="css/Qlik.css"> <!-- Qlik CSS -->
+    <link rel="stylesheet" href="css/AD.css"> <!-- Ask Dave CSS -->
+    
+    <!-- ******** Data Host and Client ID Params ******** -->
     <script
       crossorigin="anonymous"
       type="application/javascript"
-      src="https://cdn.jsdelivr.net/npm/@qlik/embed-web-components@1/dist/index.min.js"
+      src="
+    https://cdn.jsdelivr.net/npm/@qlik/embed-web-components@1/dist/index.min.js"
       data-host="https://qliksales.us.qlikcloud.com"
       data-client-id="c0ba38b73a167db8357e5c820f9584bd"
-      data-redirect-uri="https://salesai.qliktech.com/oauth_callback.html"
+      data-redirect-uri="https://sales-ai-dev-jz.replit.app/oauth_callback.html"
       data-access-token-storage="session"
-      data-auto-redirect="true"
-      
-    ></script>
-
-    <!-- *********************************************** -->
-
-    <!-- *********************************************** -->
-
+      data-auto-redirect="true"     
+    >
+    </script>
+ 
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
     />
-    <link rel="stylesheet" href="style.css" />
   </head>
 
-   <body>
+  <body>
     <div class="content">
-      <div class="top-bar">
-        <div class="container">
-          <img src="img/qlik_logo.png" alt="Qlik Logo" class="logo" />
-          <div class="text">Qlik SalesAI</div>
-        </div>
-
-        <div class="video-buttons">
-          <button class="video-button" onclick="playVideo1()">
-            Demo Guide
-          </button>
-          <button class="video-button" onclick="playVideo2()">
-            Qlik Answers Intro
-          </button>
-          <button class="video-button" onclick="playVideo3()">
-            Product Demo
-          </button>
-        </div>
-
-        <div class="switch-container">
-          <span class="switch-label">Internal Version</span>
-          <label class="switch">
-            <input type="checkbox" id="toggle-switch" onclick="toggleDivs()" />
-            <span class="slider round"></span>
-          </label>
-          <span class="switch-label">Demo Version</span>
+       <div class="container_img">
+        <div class="wrap">
+          <div class="topnav" id="myTopnav">
+            <div class="dropdown">
+              <button class="dropbtn">Qlik Answers Videos 
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a id="myLink3" title="Demo guide" href="#" onclick="openVideo1Popup();return false;">Demo guide</a>
+                <a id="myLink4" title="Qlik Answers Intro" href="#" onclick="openVideo2Popup();return false;">Qlik Answers Intro</a>
+                <a id="myLink5" title="Product Demo" href="#" onclick="openVideo3Popup();return false;">Product Demo</a>
+                <a id="myLink6" title="QA for Sales Enablement" href="#" onclick="openVideo4Popup();return false;">QA for Sales Enablement</a>
+              </div>
+            </div>
+            <a id="myLink7" title="About_SalesAI" href="https://qliktechnologies365.sharepoint.com/sites/QlikSalesAI"  target="_blank" rel="noopener noreferrer">About SalesAI</a>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+          </div>
         </div>
       </div>
-
-      <!-------------------------------------------------------------->
-      <!-- Official SalesAI Assistant -->
-
-      <div id="assistant-official" class="assistant active">
-        <qlik-embed
-          ui="private:@qmfe/assistant-ui#AssistantChatEmbedded"
-          assistant-id="7b429d79-e999-437a-a732-6c0b6e9d6a02"
-          expanded="true"
-        ></qlik-embed>
+    </div>
+    
+    <div class="top-bar">
+      <img src="img/qlik_logo.png" alt="Qlik logo" class="logo" />
+      <div class="switch-container">
+        <span class="switch-label">Internal Version</span>
+        <label class="switch">
+          <input type="checkbox" id="toggle-switch" onclick="toggleDivs()" />
+          <span class="slider round"></span>
+        </label>
+        <span class="switch-label">Demo Version</span>
       </div>
+    </div>  
 
-      <!-- DEMO SalesAI Assistant -->
+    <!-------------------------------------------------------------->
+    <!-- Official SalesAI Assistant -->
+    <!-------------------------------------------------------------->
+    <div id="assistant-official" class="assistant active">
+      <qlik-embed
+        ui="private:@qmfe/assistant-ui#AssistantChatEmbedded"
+        assistant-id="7b429d79-e999-437a-a732-6c0b6e9d6a02"
+        expanded="true"
+      ></qlik-embed>
+    </div>
 
-      <div id="assistant-demo" class="assistant hidden">
-        <qlik-embed
-          ui="private:@qmfe/assistant-ui#AssistantChatEmbedded"
-          assistant-id="7ff40ae7-f749-4f89-a127-addc369385ae"
-          expanded="true"
-          appearance="qlik-dark"
-        </qlik-embed>
+    <!-------------------------------------------------------------->
+    <!-- DEMO SalesAI Assistant -->
+    <!-------------------------------------------------------------->
+    <div id="assistant-demo" class="assistant hidden">
+      <qlik-embed
+        ui="private:@qmfe/assistant-ui#AssistantChatEmbedded"
+        assistant-id="7ff40ae7-f749-4f89-a127-addc369385ae"
+        expanded="true"
+        appearance="qlik-dark"
+      </qlik-embed>
+    </div>
+    
+    <div class="container" style="margin-top: 15px">
+      <div class="text-small">
+        Disclaimer: SalesAI is an artificial intelligence (AI) tool and there
+        is a possibility that its output may be inaccurate and/or
+        confidential. You may not share the output of this tool externally
+        until you have verified that the output is accurate and
+        non-confidential by checking the cited references.
       </div>
+    </div>
+    
+    <!-------------------------------------------------------------->
+    <!-- Usage Stats>
+    <!-------------------------------------------------------------->
+    <div id="US_stats" class="qlik_sheet">
+      <div class="Qlik-BG-content">
+        <span class="close" onclick="closeUS_StatsPopup()">&times;</span>
+        <div class="header-container">
+          <div class="avatar-container">
+            <img src="img/Sessions.png" alt="Demo Video" class="popup_title_icon" />
+          </div>
+          <div class="text-container">
+            <h2>Usage Statistics</h2>
+            <p>(Source: Internal details usage telemetry)</p>
+          </div>
+        </div>
 
-      <!-------------------------------------------------------------->
+        <div class="Qlik-Embed-content"> 
+          <qlik-embed
+            id="visualization"
+            ui="classic/chart"          
+            app-id="51db13c9-6374-4e95-8ce9-a16ff301fc60"
+            object-id="af399e15-e482-4d3e-915f-03bcde0c179b"
+            context:json="{interactions:{select: false, edit: false}}"
+          </qlik-embed>        
 
-
-      <div class="container" style="margin-top: 15px;>
-        <div class="text-small">
-          Disclaimer: SalesAI is an artificial intelligence (AI) tool and there
-          is a possibility that its output may be inaccurate and/or
-          confidential. You may not share the output of this tool externally
-          until you have verified that the output is accurate and
-          non-confidential by checking the cited references.
+          <qlik-embed
+            ui="analytics/selections"
+            app-id="51db13c9-6374-4e95-8ce9-a16ff301fc60"
+          </qlik-embed> 
+        
         </div>
       </div>
     </div>
 
-    <script>
-      
-      function playVideo1() {
-        window.open(
-          "https://files.qlik.com/url/af4kwugwzsznc2fw",
-          "_blank",
-        );
-      }
-      
-      function playVideo2() {
-        window.open(
-          "https://www.youtube.com/watch?v=dKlStbslh6I&feature=youtu.be",
-          "_blank",
-        );
+    <!-------------------------------------------------------------->
+    <!-- Video 1, Demo MODAL>
+    <!-------------------------------------------------------------->
+    <div id="video1Modal" class="modal">
+      <div class="Video-modal-content">
+
+        <!-- Close Button -->
+        <span class="close" onclick="closeVideo1Popup()">&times;</span>
+
+        <!-- Container for Avatar and Title/Text Side-by-Side -->
+        <div class="header-container">
+          <!-- Avatar Section Left Side -->
+          <div class="avatar-container">
+            <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
+          </div>
+
+          <!-- Title and Description Section Right Side -->
+          <div class="text-container">
+            <h2>SalesAI on Qlik Answers</h2>
+            <p>Sales Rep Demo Guidance</p>
+          </div>
+        </div>
+
+        <div class="video-container">
+          <div class="left">
+            SalesAI has a ‘Demo Mode’ which reduces the knowledge bases that Qlik Answers is trained on to the Qlik Product Marketing Content.  This recording shows you how to enter ‘Demo Mode’; which content is used in demo mode, and a series of questions to quickly demonstrate Qlik Answers.
+          </div>
+            
+          <div class="right">
+            <video width="100%" height="auto" controls>
+              <source src= "https://files.qlik.com/app/websharepro/share?checkonly=0&amp;path=%2FSHARED%2F%21RmcV2QrEY%2F9uR4KLnBr95qRH1w&amp;preview=1&amp;redirect=1" controls type="video/mp4">
+                         Your browser does not support the video tag.
+              </source>
+           </video>
+         </div>
+        </div>
+      </div>
+    </div> 
+
+    <!-------------------------------------------------------------->
+    <!-- Video 2, Demo MODAL>
+    <!-------------------------------------------------------------->
+    <div id="video2Modal" class="modal">
+      <div class="Video-modal-content">
+
+        <!-- Close Button -->
+        <span class="close" onclick="closeVideo2Popup()">&times;</span>
+
+        <!-- Container for Avatar and Title/Text Side-by-Side -->
+        <div class="header-container">
+          <!-- Avatar Section Left Side -->
+          <div class="avatar-container">
+            <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
+          </div>
+
+          <!-- Title and Description Section Right Side -->
+          <div class="text-container">
+            <h2>Introducing Qlik Answers - SaaS in 60</h2>
+            <p>SaaS in 60 Seconds</p>
+          </div>
+        </div>
+
+        <div class="video-container">
+          <div class="left">
+            <p>A Mike Tarallo ‘SaaS in 60 Seconds’ introduction to Qlik Answers including key messaging and a short demonstration.</p>
+          </div>
+          
+          <div class="right">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dKlStbslh6I" title="Qlik Answers - quick product demo  - Do More with Qlik" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>  
+    
+    <!-------------------------------------------------------------->
+    <!-- Video 3, Demo MODAL>
+    <!-------------------------------------------------------------->
+    <div id="video3Modal" class="modal">
+      <div class="Video-modal-content">
+
+        <!-- Close Button -->
+        <span class="close" onclick="closeVideo3Popup()">&times;</span>
+
+        <!-- Container for Avatar and Title/Text Side-by-Side -->
+        <div class="header-container">
+          <!-- Avatar Section Left Side -->
+          <div class="avatar-container">
+            <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
+          </div>
+
+          <!-- Title and Description Section Right Side -->
+          <div class="text-container">
+            <h2>Product demo</h2>
+            <p>Do More with Qlik</p>
+          </div>
+        </div>
+
+        <div class="video-container">
+          <div class="left">
+            <p>A Mike Tarallo ‘Tips and Ticks’ introduction to the steps of setting Qlik Answers including setting up a Knowledge Base and a Knowledge Assistant to get answers from unstructured data.</p>
+          </div>
+          
+          <div class="right">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VWrnxKHgDZY" title="Qlik Answers - quick product demo  - Do More with Qlik" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+    <!-------------------------------------------------------------->
+    <!-- Video 4, Demo MODAL>
+    <!-------------------------------------------------------------->
+    <div id="video4Modal" class="modal">
+      <div class="Video-modal-content">
+
+        <!-- Close Button -->
+        <span class="close" onclick="closeVideo4Popup()">&times;</span>
+
+        <!-- Container for Avatar and Title/Text Side-by-Side -->
+        <div class="header-container">
+          <!-- Avatar Section Left Side -->
+          <div class="avatar-container">
+            <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
+          </div>
+
+          <!-- Title and Description Section Right Side -->
+          <div class="text-container">
+            <h2>Qlik Answers</h2>
+            <p>for Sales Enablement</p>
+          </div>
+        </div>
+
+        <div class="video-container">
+          <div class="left">
+            <p>Qlik on Qlik:  Learn how Qlik uses Qlik Answers to empower our Saleforce to better serve our customers.</p>
+          </div>
+
+          <div class="right">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/70VD6Om4Nfg" title="Qlik Answers for Sales Enablement" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+    <!-------------------------------------------------------------->
+    <!-- About >
+    <!-------------------------------------------------------------->
+
+    <div id="About_SalesAI" class="qlik_sheet">
+      <div class="Qlik-BG-content_noscroll">
+        <span class="close" onclick="closeAboutPopup()">&times;</span>
+        <div class="header-container">
+          <div class="avatar-container">
+            <img src="img/Sessions.png" alt="Demo Video" class="popup_title_icon" />
+          </div>
+          <div class="text-container">
+            <h2>About</h2>
+            <p>SalesAI</p>
+          </div>
+        </div>
+      </div>
+    </div>
+<script>
+//=================================================================
+      // Functions
+      //=================================================================
+     
+      function openUS_StatsPopup() {
+        document.getElementById("US_stats").style.display = "block";
+        document.getElementById("US_stats").style.visibility = "visible";
       }
 
-      function playVideo3() {
-        window.open(
-          "https://videos.qlik.com/watch/tt7qzcnZbA5FJGKySbV4pG?",
-          "_blank",
-        );
+      function closeUS_StatsPopup() {
+        document.getElementById("US_stats").style.visibility = "hidden";
+      }
+
+      function openVideo1Popup() {
+          document.getElementById("video1Modal").style.display = "block";
+      }
+
+      function closeVideo1Popup() {
+          document.getElementById("video1Modal").style.display = "none";
+        document.querySelectorAll('iframe').forEach(v => { v.src = v.src });
+        document.querySelectorAll('video').forEach(v => { v.pause() });
+      }
+
+      function openVideo2Popup() {
+          document.getElementById("video2Modal").style.display = "block";
+      }
+
+      function closeVideo2Popup() {
+          document.getElementById("video2Modal").style.display = "none";
+        document.querySelectorAll('iframe').forEach(v => { v.src = v.src });
+        document.querySelectorAll('video').forEach(v => { v.pause() });
+      }
+
+      function openVideo3Popup() {
+          document.getElementById("video3Modal").style.display = "block";
+      }
+
+      function closeVideo3Popup() {
+          document.getElementById("video3Modal").style.display = "none";
+          document.querySelectorAll('iframe').forEach(v => { v.src = v.src });
+          document.querySelectorAll('video').forEach(v => { v.pause() });
+      }
+
+      function openVideo4Popup() {
+          document.getElementById("video4Modal").style.display = "block";
+      }
+
+      function closeVideo4Popup() {
+          document.getElementById("video4Modal").style.display = "none";
+          document.querySelectorAll('iframe').forEach(v => { v.src = v.src });
+          document.querySelectorAll('video').forEach(v => { v.pause() });
+      }
+
+      function openAboutPopup() {
+        document.getElementById("About_SalesAI").style.display = "block";
+        document.getElementById("About_SalesAI").style.visibility = "visible";
+      }
+
+      function closeAboutPopup() {
+        document.getElementById("About_SalesAI").style.visibility = "hidden";
+      }
+
+      function Background_Light() {   
+        document.body.style.backgroundColor= "white";
+      }
+
+      function Background_Dark() {   
+        document.body.style.backgroundColor= "black";
       }
 
       function toggleDivs() {
@@ -125,19 +395,38 @@
 
           if (document.getElementById("toggle-switch").checked) {
               // Show DEMO and hide official
+              Background_Dark();
               officialDiv.classList.remove('active');
               officialDiv.classList.add('hidden');
               demoDiv.classList.remove('hidden');
               demoDiv.classList.add('active');
           } else {
               // Show OFFICIAL and hide demo
+              Background_Light();
               officialDiv.classList.remove('hidden');
               officialDiv.classList.add('active');
               demoDiv.classList.remove('active');
               demoDiv.classList.add('hidden');
           }
       }
-     
+  
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
     </script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
