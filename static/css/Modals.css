@@ -1,0 +1,151 @@
+/* ------------------------------------------- */
+/* -----------  Stats MODAL --------------- */
+/* ------------------------------------------- */
+.Stats-modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px 40px; /* Increased left and right padding */
+  border: 1px solid #888;
+  width: 80%;
+  height: 70%;
+  /*max-width: 700px;*/
+  position: relative;
+  text-align: left; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  border-radius: 8px; /* Rounded corners */
+}
+
+/* ------------------------------------------- */
+/* -----------  Video MODAL --------------- */
+/* ------------------------------------------- */
+.Video-modal-content {  
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px 40px; /* Increased left and right padding */
+  border: 1px solid #888;
+  width: 80%;
+  height: 80%;
+  /*max-width: 700px;*/
+  position: relative;
+  text-align: left; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  border-radius: 8px; /* Rounded corners */
+}
+
+/* ------------------------------------------- */
+/* -----------  ASK DAVE MODAL --------------- */
+/* ------------------------------------------- */
+
+/* Modal Content Layout */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px 40px; /* Increased left and right padding */
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 700px;
+  position: relative;
+  text-align: left; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  border-radius: 8px; /* Rounded corners */
+}
+
+/* Header: Avatar and Title/Text Side-by-Side */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Ensures content is aligned to the left */
+  text-align: left; /* Keeps text left-aligned */
+  margin-bottom: 20px; /* Space between header and form */
+}
+
+/* Avatar Styling */
+.avatar-container {
+  margin-right: 15px;
+  /* Space between the avatar and the text */
+}
+
+.avatar {
+  width: 80px;
+  border-radius: 50%;
+  height: auto;
+}
+
+.popup_title_icon {
+  height: 40px;
+  width: auto;
+}
+
+/* Title and Description Text */
+.text-container h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.text-container p {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10; /* Ensure it's above other content */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #888;
+  font-size: 28px;
+  font-weight: bold;
+  z-index: 25; /* Ensure it stays on top */
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Form Inputs and Button */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Align form inputs and labels to the left */
+form {
+  text-align: left;
+}
+
+/* Loading Spinner */
+#loading {
+  display: none;
+  text-align: center;
+}
