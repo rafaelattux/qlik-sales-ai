@@ -51,19 +51,27 @@ body {
   flex-wrap: wrap;
   width: 75vw;
   height: 55vh;
+  max-width: 75vw;
+  max-height: 55vh;
+  overflow: hidden;
 }
 .video-container > * {
   background: #eee;
   padding: 2rem;
   text-align: Left;
   border: 5px solid white;
+  box-sizing: border-box;
 }
 
 .video-container .left {
   flex: 1;
+  overflow-y: auto;
+  max-height: 100%;
 }
 .video-container .right {
   flex: 2;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 #assistant-official {
