@@ -20,13 +20,21 @@
       clear: both;
       display: table;
     }
+
+    .disabled-menu-item {
+      color: lightgray;
+      pointer-events: none; /* Make it non-clickable */
+      text-decoration: none; /* Remove underline if it's an <a> tag */
+      cursor: default; /* Change cursor to default */
+    }
+
     </style>
-    
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Qlik SalesAI</title>
     <link rel="icon" href="img/qlik_fav_icon.png" type="image/png" />
-    
+
     <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
     <link rel="stylesheet" href="css/Style.css"> <!-- Style -->
     <link rel="stylesheet" href="css/Modals.css"> <!-- Modal -->
@@ -47,7 +55,7 @@
       data-auto-redirect="true"     
     >
     </script>
- 
+    
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
@@ -78,17 +86,28 @@
                 <a id="myLink7" title="About_SalesAI" href="https://qliktechnologies365.sharepoint.com/sites/QlikSalesAI"  target="_blank" rel="noopener noreferrer">About SalesAI</a>
               </div>
             </div>
-            
+
             <div class="dropdown">
               <button class="dropbtn" onclick="openAskDave()">Ask Dave<i class="fa fa-caret-down"></i></button>
             </div>
-            
+
+            <div class="dropdown">
+              <button class="dropbtn">Stellar-Seller and the Side-Qlik
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a id="myLink3" title="Demo guide" href="#" onclick="openStellarIntroPopup();return false;">Intro</a>
+                <a class="disabled-menu-item">Episode 1...</a>
+              </div>
+            </div>
+            </div>       
+
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
           </div>
         </div>
       </div>
     </div>
-    
+
     <div class="top-bar">
       <img src="img/qlik_logo.png" alt="Qlik logo" class="logo" />
       <div class="switch-container">
@@ -124,9 +143,9 @@
         assistant-id="7ff40ae7-f749-4f89-a127-addc369385ae"
         expanded="true"
         appearance="qlik-dark"
-      </qlik-embed>
+      ></qlik-embed>
     </div>
-    
+
     <div class="container" style="margin-top: 15px">
       <div class="text-small">
         Disclaimer: SalesAI is an artificial intelligence (AI) tool and there
@@ -136,7 +155,7 @@
         non-confidential by checking the cited references.
       </div>
     </div>
-    
+
     <!-------------------------------------------------------------->
     <!-- Usage Stats>
     <!-------------------------------------------------------------->
@@ -160,13 +179,13 @@
             app-id="51db13c9-6374-4e95-8ce9-a16ff301fc60"
             object-id="af399e15-e482-4d3e-915f-03bcde0c179b"
             context:json="{interactions:{select: false, edit: false}}"
-          </qlik-embed>        
+          ></qlik-embed>        
 
           <qlik-embed
             ui="analytics/selections"
             app-id="51db13c9-6374-4e95-8ce9-a16ff301fc60"
-          </qlik-embed> 
-        
+          ></qlik-embed> 
+
         </div>
       </div>
     </div>
@@ -198,11 +217,10 @@
           <div class="left">
             SalesAI has a ‘Demo Mode’ which reduces the knowledge bases that Qlik Answers is trained on to the Qlik Product Marketing Content.  This recording shows you how to enter ‘Demo Mode’; which content is used in demo mode, and a series of questions to quickly demonstrate Qlik Answers.
           </div>
-            
+
           <div class="right">
             <video width="100%" height="auto" controls>
               <source src= "https://files.qlik.com/app/websharepro/share?checkonly=0&amp;path=%2FSHARED%2F%21RmcV2QrEY%2F9uR4KLnBr95qRH1w&amp;preview=1&amp;redirect=1" controls type="video/mp4">
-                         Your browser does not support the video tag.
               </source>
            </video>
          </div>
@@ -237,14 +255,14 @@
           <div class="left">
             <p>A Mike Tarallo ‘SaaS in 60 Seconds’ introduction to Qlik Answers including key messaging and a short demonstration.</p>
           </div>
-          
+
           <div class="right">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dKlStbslh6I" title="Qlik Answers - quick product demo  - Do More with Qlik" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </div>  
-    
+
     <!-------------------------------------------------------------->
     <!-- Video 3, Demo MODAL>
     <!-------------------------------------------------------------->
@@ -272,7 +290,7 @@
           <div class="left">
             <p>A Mike Tarallo ‘Tips and Ticks’ introduction to the steps of setting Qlik Answers including setting up a Knowledge Base and a Knowledge Assistant to get answers from unstructured data.</p>
           </div>
-          
+
           <div class="right">
             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VWrnxKHgDZY" title="Qlik Answers - quick product demo  - Do More with Qlik" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
@@ -315,6 +333,47 @@
       </div>
     </div>  
 
+    <source src= "https://files.qlik.com/app/websharepro/share?checkonly=0&amp;path=%2FSHARED%2F%21RmcV2QrEY%2F9uR4KLnBr95qRH1w&amp;preview=1&amp;redirect=1" controls type="video/mp4">
+    </source>
+
+    <!-------------------------------------------------------------->
+    <!-- Video 1, Stellar Seller>
+    <!-------------------------------------------------------------->
+    <div id="StellarVideo1Modal" class="modal">
+      <div class="Video-modal-content">
+
+        <!-- Close Button -->
+        <span class="close" onclick="CloseStellarIntroPopup()">&times;</span>
+
+        <!-- Container for Avatar and Title/Text Side-by-Side -->
+        <div class="header-container">
+          <!-- Avatar Section Left Side -->
+          <div class="avatar-container">
+            <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
+          </div>
+
+          <!-- Title and Description Section Right Side -->
+          <div class="text-container">
+            <h2>Stellar-Seller and the Side-Qlik</h2>
+            <p>Intro</p>
+          </div>
+        </div>
+
+        <div class="video-container">
+          <div class="left">
+            The days of slowly reacting to trends are over. With AI evolving at lightning speed, even the slightest delay in adapting can leave sellers behind — and in sales, that can be costly. Leveraging AI in your daily practice leads to faster, data-driven results that sharpen your competitive edge.<br><br>Many of you are already using generative AI in powerful ways — and those stories deserve more than a quick email shoutout. They deserve to be celebrated. And you deserve to learn from your peers’ real-world wins.<br><br>But what if we shared those stories in a way that’s not just informative — but creative, engaging, and fun?<br><br>Introducing Stellar-Seller and the Side-Qlik…<br>Your quarterly e-comic book spotlighting real Qlik sellers using AI to close more sales!<br><br>First issue coming soon.
+          </div>
+
+          <div class="right">
+            <video id="stellarVideo" width="100%" height="auto" controls>
+              <source src="https://qliktechnologies365.sharepoint.com/:v:/r/sites/askdave/Shared%20Documents/Video/StellarSeller/Qlik%20Enablement%20Sparks%20Stellar-Seller%20Video%20Package%20060525.mp4" type="video/mp4">
+           </video>
+         </div>
+        </div>
+      </div>
+    </div>  
+
+
     <!-------------------------------------------------------------->
     <!-- About >
     <!-------------------------------------------------------------->
@@ -337,7 +396,7 @@
 //=================================================================
       // Functions
       //=================================================================
-     
+
       function openUS_StatsPopup() {
         document.getElementById("US_stats").style.display = "block";
         document.getElementById("US_stats").style.visibility = "visible";
@@ -387,6 +446,16 @@
           document.querySelectorAll('video').forEach(v => { v.pause() });
       }
 
+      function openStellarIntroPopup() {
+          document.getElementById("StellarVideo1Modal").style.display = "block";
+      }
+
+      function CloseStellarIntroPopup() {
+          document.getElementById("StellarVideo1Modal").style.display = "none";
+          document.querySelectorAll('iframe').forEach(v => { v.src = v.src });
+          document.querySelectorAll('video').forEach(v => { v.pause() });
+      }
+
       function openAboutPopup() {
         document.getElementById("About_SalesAI").style.display = "block";
         document.getElementById("About_SalesAI").style.visibility = "visible";
@@ -424,7 +493,7 @@
               demoDiv.classList.add('hidden');
           }
       }
-  
+
       function myFunction() {
         var x = document.getElementById("myTopnav");
         if (x.className === "topnav") {
@@ -440,12 +509,3 @@
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
