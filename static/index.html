@@ -1,403 +1,399 @@
 <!doctype html>
 <html>
-  <head>
+ <head>
 
-    <style>
-    * {
-      box-sizing: border-box;
-    }
+   <style>
+   * {
+     box-sizing: border-box;
+   }
 
-    .column {
-      float: left;
-      align-content: center;
-      width: 33.33%;
-      padding: 5px;
-    }
+   .column {
+     float: left;
+     align-content: center;
+     width: 33.33%;
+     padding: 5px;
+   }
 
-    /* Clearfix (clear floats) */
-    .row::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
+   /* Clearfix (clear floats) */
+   .row::after {
+     content: "";
+     clear: both;
+     display: table;
+   }
 
-    .disabled-menu-item {
-      color: lightgray;
-      pointer-events: none; /* Make it non-clickable */
-      text-decoration: none; /* Remove underline if it's an <a> tag */
-      cursor: default; /* Change cursor to default */
-    }
+   .disabled-menu-item {
+     color: lightgray;
+     pointer-events: none; /* Make it non-clickable */
+     text-decoration: none; /* Remove underline if it's an <a> tag */
+     cursor: default; /* Change cursor to default */
+   }
 
-    </style>
+   </style>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Qlik SalesAI</title>
-    <link rel="icon" href="img/qlik_fav_icon.png" type="image/png" />
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Qlik SalesAI</title>
+   <link rel="icon" href="img/qlik_fav_icon.png" type="image/png" />
 
-    <!-- <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-    <link rel="stylesheet" href="css/Style.css"> <!-- Style -->
-    <link rel="stylesheet" href="css/Modals.css"> <!-- Modal -->
-    <link rel="stylesheet" href="css/Menu.css"> <!-- CSS menu -->
-    <!-- <link rel="stylesheet" href="css/Qlik.css"> <!-- Qlik CSS -->
-    <link rel="stylesheet" href="css/AD.css"> <!-- Ask Dave CSS -->
+   <!-- <link rel="stylesheet" href="css/reset.css"> -->
+   <link rel="stylesheet" href="css/Style.css"> <!-- Style -->
+   <link rel="stylesheet" href="css/Modals.css"> <!-- Modal -->
+   <link rel="stylesheet" href="css/Menu.css"> <!-- CSS menu -->
+   <!-- <link rel="stylesheet" href="css/Qlik.css"> -->
+   <link rel="stylesheet" href="css/AD.css"> <!-- Ask Dave CSS -->
 
-    <!-- ******** Data Host and Client ID Params ******** -->
-    <script
-      crossorigin="anonymous"
-      type="application/javascript"
-      src="
-    https://cdn.jsdelivr.net/npm/@qlik/embed-web-components@1/dist/index.min.js"
-      data-host="https://qliksales.us.qlikcloud.com"
-      data-client-id="c0ba38b73a167db8357e5c820f9584bd"
-      data-redirect-uri="https://salesai.qliktech.com/oauth_callback.html"
-      data-access-token-storage="session"
-      data-auto-redirect="true"     
-    >
-    </script>
-    
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-    />
-  </head>
+   <!-- ******** Data Host and Client ID Params ******** -->
+   <!-- data-redirect-uri="https://57c4c062-98eb-4230-b3e0-9fac9553313d-00-wfp8c43p9mhu.spock.replit.dev/oauth_callback.html" -->
+   <script
+     crossorigin="anonymous"
+     type="application/javascript"
+     src="https://cdn.jsdelivr.net/npm/@qlik/embed-web-components@1/dist/index.min.js"
+     data-host="https://qliksales.us.qlikcloud.com"
+     data-client-id="c0ba38b73a167db8357e5c820f9584bd"
+     data-redirect-uri="https://salesai.qliktech.com/oauth_callback.html"
+     data-access-token-storage="session"
+     data-auto-redirect="true"     
+   >
+   </script>
 
-  <body>
-    <div class="content">
-       <div class="container_img">
-        <div class="wrap">
-          <div class="topnav" id="myTopnav">
-            <div class="dropdown">
-              <button class="dropbtn">Qlik Answers Videos 
-                <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="dropdown-content">
-                <a id="myLink3" title="Demo guide" href="#" onclick="openVideo1Popup();return false;">Demo guide</a>
-                <a id="myLink4" title="Qlik Answers Intro" href="#" onclick="openVideo2Popup();return false;">Qlik Answers Intro</a>
-                <a id="myLink5" title="Product Demo" href="#" onclick="openVideo3Popup();return false;">Product Demo</a>
-                <a id="myLink6" title="Qlik Answers for Sales Enablement" href="#" onclick="openVideo4Popup();return false;">Qlik Answers for Sales Enablement</a>
-              </div>
-            </div>
+   <link
+     rel="stylesheet"
+     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+   />
+ </head>
 
-            <div class="dropdown">
-              <button class="dropbtn" onclick="openAskDave()">Ask Dave<i class="fa fa-caret-down"></i></button>
-            </div>
+ <body>
+   <!-- Header with Logo, Menu, and Toggle -->
+   <header class="app-header">
+     <div class="header-content">
+       <div class="logo-section">
+         <img src="img/Qlik Logo R - 2 Color Positive RGB.png" alt="Qlik logo" class="logo" id="logo-image" />
+         <h1 class="logo-text">SalesAI</h1>
+       </div>
 
-            <div class="dropdown">
-              <button class="dropbtn">Stellar-Seller and the Side-Qlik
-                <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="dropdown-content">
-                <a id="myLink3" title="Demo guide" href="#" onclick="openStellarIntroPopup();return false;">Intro</a>
-                <a class="disabled-menu-item">Episode 1...</a>
-              </div>
-            </div>
-
-            <div class="dropdown">
-              <button class="dropbtn">Info
-                <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="dropdown-content">
-                <a id="myLink7" title="About_SalesAI" href="https://qliktechnologies365.sharepoint.com/sites/QlikSalesAI"  target="_blank" rel="noopener noreferrer">About SalesAI</a>
-              </div>
-            </div>
-            </div>       
-
-            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="top-bar">
-      <img src="img/qlik_logo.png" alt="Qlik logo" class="logo" />
-      <div class="switch-container">
-        <span class="switch-label">Internal Version</span>
-        <label class="switch">
-          <input type="checkbox" id="toggle-switch" onclick="toggleDivs()" />
-          <span class="slider round"></span>
-        </label>
-        <span class="switch-label">Demo Version</span>
-      </div>
-    </div>  
-
-     <!--ui="private:@qmfe/assistant-ui#AssistantChatEmbedded"
-    ui="ai/assistant"
-    -->
-    <!-------------------------------------------------------------->
-    <!-- Official SalesAI Assistant -->
-    <!-------------------------------------------------------------->
-    <div id="assistant-official" class="assistant active">
-      <qlik-embed
-        ui="ai/assistant"
-        assistant-id="7b429d79-e999-437a-a732-6c0b6e9d6a02"
-        expanded="true"
-      ></qlik-embed>
-    </div>
-
-    <!-------------------------------------------------------------->
-    <!-- DEMO SalesAI Assistant -->
-    <!-------------------------------------------------------------->
-    <div id="assistant-demo" class="assistant hidden">
-      <qlik-embed
-        ui="ai/assistant"
-        assistant-id="7ff40ae7-f749-4f89-a127-addc369385ae"
-        expanded="true"
-        appearance="qlik-dark"
-      ></qlik-embed>
-    </div>
-
-    <div class="container" style="margin-top: 15px">
-      <div class="text-small">
-        Disclaimer: SalesAI is an artificial intelligence (AI) tool and there
-        is a possibility that its output may be inaccurate and/or
-        confidential. You may not share the output of this tool externally
-        until you have verified that the output is accurate and
-        non-confidential by checking the cited references.
-      </div>
-    </div>
-
-    <!-------------------------------------------------------------->
-    <!-- Usage Stats>
-    <!-------------------------------------------------------------->
-    <!--
-    <div id="US_stats" class="qlik_sheet">
-      <div class="Qlik-BG-content">
-        <span class="close" onclick="closeUS_StatsPopup()">&times;</span>
-        <div class="header-container">
-          <div class="avatar-container">
-            <img src="img/Sessions.png" alt="Demo Video" class="popup_title_icon" />
-          </div>
-          <div class="text-container">
-            <h2>Usage Statistics</h2>
-            <p>(Source: Internal details usage telemetry)</p>
-          </div>
-        </div>
-
-        <div class="Qlik-Embed-content"> 
-          <qlik-embed
-            id="visualization"
-            ui="classic/chart"          
-            app-id="51db13c9-6374-4e95-8ce9-a16ff301fc60"
-            object-id="af399e15-e482-4d3e-915f-03bcde0c179b"
-            context:json="{interactions:{select: false, edit: false}}"
-          ></qlik-embed>        
-
-          <qlik-embed
-            ui="analytics/selections"
-            app-id="51db13c9-6374-4e95-8ce9-a16ff301fc60"
-          ></qlik-embed> 
-
-        </div>
-      </div>
-    </div>
-    -->
-    
-    <!-------------------------------------------------------------->
-    <!-- Video 1, Demo MODAL>
-    <!-------------------------------------------------------------->
-    <div id="video1Modal" class="modal">
-      <div class="Video-modal-content">
-
-        <!-- Close Button -->
-        <span class="close" onclick="closeVideo1Popup()">&times;</span>
-
-        <!-- Container for Avatar and Title/Text Side-by-Side -->
-        <div class="header-container">
-          <!-- Avatar Section Left Side -->
-          <div class="avatar-container">
-            <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
-          </div>
-
-          <!-- Title and Description Section Right Side -->
-          <div class="text-container">
-            <h2>SalesAI on Qlik Answers</h2>
-            <p>Sales Rep Demo Guidance</p>
-          </div>
-        </div>
-
-        <div class="video-container">
-          <div class="left">
-            SalesAI has a ‘Demo Mode’ which reduces the knowledge bases that Qlik Answers is trained on to the Qlik Product Marketing Content.  This recording shows you how to enter ‘Demo Mode’; which content is used in demo mode, and a series of questions to quickly demonstrate Qlik Answers.
-          </div>
-
-          <div class="right">
-            <video width="100%" height="auto" controls>
-              <source src= "https://files.qlik.com/app/websharepro/share?checkonly=0&amp;path=%2FSHARED%2F%21RmcV2QrEY%2F9uR4KLnBr95qRH1w&amp;preview=1&amp;redirect=1" controls type="video/mp4">
-              </source>
-           </video>
+       <div class="control-box">
+         <div class="demo-toggle">
+           <span class="toggle-label">Internal</span>
+           <label class="switch">
+             <input type="checkbox" id="toggle-switch" onclick="toggleDivs()" />
+             <span class="slider"></span>
+           </label>
+           <span class="toggle-label">Demo</span>
          </div>
-        </div>
-      </div>
-    </div> 
 
-    <!-------------------------------------------------------------->
-    <!-- Video 2, Demo MODAL>
-    <!-------------------------------------------------------------->
-    <div id="video2Modal" class="modal">
-      <div class="Video-modal-content">
+         <div class="toggle-separator"></div>
 
-        <!-- Close Button -->
-        <span class="close" onclick="closeVideo2Popup()">&times;</span>
+         <div class="main-menu">
+           <button class="menu-toggle" onclick="toggleMenu()" id="menuToggle">
+             Help
+           </button>
+         </div>
+       </div>
 
-        <!-- Container for Avatar and Title/Text Side-by-Side -->
-        <div class="header-container">
-          <!-- Avatar Section Left Side -->
-          <div class="avatar-container">
-            <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
-          </div>
+       <div style="display: none;">
+         <div class="main-menu">
+         </div>
+       </div>
 
-          <!-- Title and Description Section Right Side -->
-          <div class="text-container">
-            <h2>Introducing Qlik Answers - SaaS in 60</h2>
-            <p>SaaS in 60 Seconds</p>
-          </div>
-        </div>
+       <div class="dropdown-menu" id="dropdownMenu">
+           <div class="menu-section">
+             <div class="section-title">Qlik Answers Videos</div>
+             <a href="#" class="menu-item" onclick="openVideo1Popup();return false;">Demo Guide</a>
+             <a href="#" class="menu-item" onclick="openVideo2Popup();return false;">Qlik Answers Intro</a>
+             <a href="#" class="menu-item" onclick="openVideo3Popup();return false;">Product Demo</a>
+             <a href="#" class="menu-item" onclick="openVideo4Popup();return false;">Qlik Answers for Sales Enablement</a>
+           </div>
 
-        <div class="video-container">
-          <div class="left">
-            <p>A Mike Tarallo ‘SaaS in 60 Seconds’ introduction to Qlik Answers including key messaging and a short demonstration.</p>
-          </div>
+           <div class="menu-section">
+             <div class="section-title">Resources</div>
+             <a href="#" class="menu-item" onclick="openAskDave()">Ask Dave</a>
+           </div>
 
-          <div class="right">
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dKlStbslh6I" title="Qlik Answers - quick product demo  - Do More with Qlik" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>  
+           <div class="menu-section">
+             <div class="section-title">Stellar-Seller and the Side-Qlik</div>
+             <a href="#" class="menu-item" onclick="openStellarIntroPopup();return false;">Intro</a>
+             <a href="https://qlik.mindtickle.com/new/ui/learner/training/programs/1973080223216703120?series=1973080223216703120" target="_blank" rel="noopener noreferrer" class="menu-item" onclick="toggleMenu()">Episode 1...</a>
+           </div>
 
-    <!-------------------------------------------------------------->
-    <!-- Video 3, Demo MODAL>
-    <!-------------------------------------------------------------->
-    <div id="video3Modal" class="modal">
-      <div class="Video-modal-content">
+           <div class="menu-section">
+             <div class="section-title">Information</div>
+             <a href="https://qliktechnologies365.sharepoint.com/sites/QlikSalesAI" target="_blank" rel="noopener noreferrer" class="menu-item">About SalesAI</a>
+           </div>
+         </div>
+       </div>
+     </div>
+   </header>
 
-        <!-- Close Button -->
-        <span class="close" onclick="closeVideo3Popup()">&times;</span>
+   <!-- Main Content Area -->
+   <div class="main-content">
+     <div class="content-area">
+       <!-- Assistant Container -->
+       <div class="assistant-container">
+         <!-- Official SalesAI Assistant -->
+         <div id="assistant-official" class="assistant active">
+           <qlik-embed
+             ui="ai/assistant"
+             assistant-id="7b429d79-e999-437a-a732-6c0b6e9d6a02"
+             expanded="true"
+           ></qlik-embed>
+         </div>
 
-        <!-- Container for Avatar and Title/Text Side-by-Side -->
-        <div class="header-container">
-          <!-- Avatar Section Left Side -->
-          <div class="avatar-container">
-            <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
-          </div>
+         <!-- DEMO SalesAI Assistant -->
+         <div id="assistant-demo" class="assistant hidden">
+           <qlik-embed
+             ui="ai/assistant"
+             assistant-id="7ff40ae7-f749-4f89-a127-addc369385ae"
+             expanded="true"
+             appearance="qlik-dark"
+           ></qlik-embed>
+         </div>
+       </div>
 
-          <!-- Title and Description Section Right Side -->
-          <div class="text-container">
-            <h2>Product demo</h2>
-            <p>Do More with Qlik</p>
-          </div>
-        </div>
+       <!-- Disclaimer -->
+       <div class="disclaimer" style="margin-top: 15px">
+         Disclaimer: SalesAI is an artificial intelligence (AI) tool and there
+         is a possibility that its output may be inaccurate and/or
+         confidential. You may not share the output of this tool externally
+         until you have verified that the output is accurate and
+         non-confidential by checking the cited references.
+       </div>
+     </div>
 
-        <div class="video-container">
-          <div class="left">
-            <p>A Mike Tarallo ‘Tips and Ticks’ introduction to the steps of setting Qlik Answers including setting up a Knowledge Base and a Knowledge Assistant to get answers from unstructured data.</p>
-          </div>
+     <!-- Right Sidebar with Banner -->
+     <div class="right-sidebar">
+       <a href="https://qlik.mindtickle.com/new/ui/learner/training/programs/1973080223216703120?series=1973080223216703120" target="_blank" rel="noopener noreferrer" class="banner-link">
+         <div class="sidebar-content">
+         </div>
+       </a>
+     </div>
+   </div>
 
-          <div class="right">
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VWrnxKHgDZY" title="Qlik Answers - quick product demo  - Do More with Qlik" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>  
 
-    <!-------------------------------------------------------------->
-    <!-- Video 4, Demo MODAL>
-    <!-------------------------------------------------------------->
-    <div id="video4Modal" class="modal">
-      <div class="Video-modal-content">
+   <!-------------------------------------------------------------->
+   <!-- Video 1, Demo MODAL>
+   <!-------------------------------------------------------------->
+   <div id="video1Modal" class="modal">
+     <div class="Video-modal-content">
 
-        <!-- Close Button -->
-        <span class="close" onclick="closeVideo4Popup()">&times;</span>
+       <!-- Close Button -->
+       <span class="close" onclick="closeVideo1Popup()">&times;</span>
 
-        <!-- Container for Avatar and Title/Text Side-by-Side -->
-        <div class="header-container">
-          <!-- Avatar Section Left Side -->
-          <div class="avatar-container">
-            <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
-          </div>
+       <!-- Container for Avatar and Title/Text Side-by-Side -->
+       <div class="header-container">
+         <!-- Avatar Section Left Side -->
+         <div class="avatar-container">
+           <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
+         </div>
 
-          <!-- Title and Description Section Right Side -->
-          <div class="text-container">
-            <h2>Qlik Answers</h2>
-            <p>for Sales Enablement</p>
-          </div>
-        </div>
+         <!-- Title and Description Section Right Side -->
+         <div class="text-container">
+           <h2>SalesAI on Qlik Answers</h2>
+           <p>Sales Rep Demo Guidance</p>
+         </div>
+       </div>
 
-        <div class="video-container">
-          <div class="left">
-            <p>Qlik on Qlik:  Learn how Qlik uses Qlik Answers to empower our Saleforce to better serve our customers.</p>
-          </div>
-
-          <div class="right">
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/70VD6Om4Nfg" title="Qlik Answers for Sales Enablement" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>  
-
-    <source src= "https://files.qlik.com/app/websharepro/share?checkonly=0&amp;path=%2FSHARED%2F%21RmcV2QrEY%2F9uR4KLnBr95qRH1w&amp;preview=1&amp;redirect=1" controls type="video/mp4">
-    </source>
-
-    <!-------------------------------------------------------------->
-    <!-- Video 1, Stellar Seller>
-    <!-------------------------------------------------------------->
-    <div id="StellarVideo1Modal" class="modal">
-      <div class="Video-modal-content">
-
-        <!-- Close Button -->
-        <span class="close" onclick="CloseStellarIntroPopup()">&times;</span>
-
-        <!-- Container for Avatar and Title/Text Side-by-Side -->
-        <div class="header-container">
-          <!-- Avatar Section Left Side -->
-          <div class="avatar-container">
-            <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
-          </div>
-
-          <!-- Title and Description Section Right Side -->
-          <div class="text-container">
-            <h2>Stellar-Seller and the Side-Qlik</h2>
-            <p>Intro</p>
-          </div>
-        </div>
-
-        <div class="video-container">
-          <div class="left">
-            The days of slowly reacting to trends are over. With AI evolving at lightning speed, even the slightest delay in adapting can leave sellers behind — and in sales, that can be costly. Leveraging AI in your daily practice leads to faster, data-driven results that sharpen your competitive edge.<br><br>Many of you are already using generative AI in powerful ways — and those stories deserve more than a quick email shoutout. They deserve to be celebrated. And you deserve to learn from your peers’ real-world wins.<br><br>But what if we shared those stories in a way that’s not just informative — but creative, engaging, and fun?<br><br>Introducing Stellar-Seller and the Side-Qlik…<br>Your quarterly e-comic book spotlighting real Qlik sellers using AI to close more sales!<br><br>First issue coming soon.
-        </div>
+       <div class="video-container">
+         <div class="left">
+           SalesAI has a ‘Demo Mode’ which reduces the knowledge bases that Qlik Answers is trained on to the Qlik Product Marketing Content.  This recording shows you how to enter ‘Demo Mode’; which content is used in demo mode, and a series of questions to quickly demonstrate Qlik Answers.
+         </div>
 
          <div class="right">
-               <iframe width="100%" height="100%" src="https://www.youtube.com/embed/-okR_9N_kAg" title="Stellar Seller - Intro"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-         </div> 
+           <video width="100%" height="auto" controls>
+             <source src= "https://files.qlik.com/app/websharepro/share?checkonly=0&amp;path=%2FSHARED%2F%21RmcV2QrEY%2F9uR4KLnBr95qRH1w&amp;preview=1&amp;redirect=1" controls type="video/mp4">
+             </source>
+           </video>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <!-------------------------------------------------------------->
+   <!-- Video 2, Demo MODAL>
+   <!-------------------------------------------------------------->
+   <div id="video2Modal" class="modal">
+     <div class="Video-modal-content">
+
+       <!-- Close Button -->
+       <span class="close" onclick="closeVideo2Popup()">&times;</span>
+
+       <!-- Container for Avatar and Title/Text Side-by-Side -->
+       <div class="header-container">
+         <!-- Avatar Section Left Side -->
+         <div class="avatar-container">
+           <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
+         </div>
+
+         <!-- Title and Description Section Right Side -->
+         <div class="text-container">
+           <h2>Introducing Qlik Answers - SaaS in 60</h2>
+           <p>SaaS in 60 Seconds</p>
+         </div>
+       </div>
+
+       <div class="video-container">
+         <div class="left">
+           <p>A Mike Tarallo ‘SaaS in 60 Seconds’ introduction to Qlik Answers including key messaging and a short demonstration.</p>
+         </div>
+
+         <div class="right">
+           <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dKlStbslh6I" title="Qlik Answers - quick product demo  - Do More with Qlik" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <!-------------------------------------------------------------->
+   <!-- Video 3, Demo MODAL>
+   <!-------------------------------------------------------------->
+   <div id="video3Modal" class="modal">
+     <div class="Video-modal-content">
+
+       <!-- Close Button -->
+       <span class="close" onclick="closeVideo3Popup()">&times;</span>
+
+       <!-- Container for Avatar and Title/Text Side-by-Side -->
+       <div class="header-container">
+         <!-- Avatar Section Left Side -->
+         <div class="avatar-container">
+           <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
+         </div>
+
+         <!-- Title and Description Section Right Side -->
+         <div class="text-container">
+           <h2>Product demo</h2>
+           <p>Do More with Qlik</p>
+         </div>
+       </div>
+
+       <div class="video-container">
+         <div class="left">
+           <p>A Mike Tarallo ‘Tips and Ticks’ introduction to the steps of setting Qlik Answers including setting up a Knowledge Base and a Knowledge Assistant to get answers from unstructured data.</p>
+         </div>
+
+         <div class="right">
+           <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VWrnxKHgDZY" title="Qlik Answers - quick product demo  - Do More with Qlik" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <!-------------------------------------------------------------->
+   <!-- Video 4, Demo MODAL>
+   <!-------------------------------------------------------------->
+   <div id="video4Modal" class="modal">
+     <div class="Video-modal-content">
+
+       <!-- Close Button -->
+       <span class="close" onclick="closeVideo4Popup()">&times;</span>
+
+       <!-- Container for Avatar and Title/Text Side-by-Side -->
+       <div class="header-container">
+         <!-- Avatar Section Left Side -->
+         <div class="avatar-container">
+           <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
+         </div>
+
+         <!-- Title and Description Section Right Side -->
+         <div class="text-container">
+           <h2>Qlik Answers</h2>
+           <p>for Sales Enablement</p>
+         </div>
+       </div>
+
+       <div class="video-container">
+         <div class="left">
+           <p>Qlik on Qlik:  Learn how Qlik uses Qlik Answers to empower our Saleforce to better serve our customers.</p>
+         </div>
+
+         <div class="right">
+           <iframe width="100%" height="100%" src="https://www.youtube.com/embed/70VD6Om4Nfg" title="Qlik Answers for Sales Enablement" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <source src= "https://files.qlik.com/app/websharepro/share?checkonly=0&amp;path=%2FSHARED%2F%21RmcV2QrEY%2F9uR4KLnBr95qRH1w&amp;preview=1&amp;redirect=1" controls type="video/mp4">
+   </source>
+
+   <!-------------------------------------------------------------->
+   <!-- Video 1, Stellar Seller>
+   <!-------------------------------------------------------------->
+   <div id="StellarVideo1Modal" class="modal">
+     <div class="Video-modal-content">
+
+       <!-- Close Button -->
+       <span class="close" onclick="CloseStellarIntroPopup()">&times;</span>
+
+       <!-- Container for Avatar and Title/Text Side-by-Side -->
+       <div class="header-container">
+         <!-- Avatar Section Left Side -->
+         <div class="avatar-container">
+           <img src="img/Movie.png" alt="Demo Video" class="popup_title_icon" />
+         </div>
+
+         <!-- Title and Description Section Right Side -->
+         <div class="text-container">
+           <h2>Stellar-Seller and the Side-Qlik</h2>
+           <p>Intro</p>
+         </div>
+       </div>
+
+       <div class="video-container">
+         <div class="left">
+           The days of slowly reacting to trends are over. With AI evolving at lightning speed, even the slightest delay in adapting can leave sellers behind — and in sales, that can be costly. Leveraging AI in your daily practice leads to faster, data-driven results that sharpen your competitive edge.<br><br>Many of you are already using generative AI in powerful ways — and those stories deserve more than a quick email shoutout. They deserve to be celebrated. And you deserve to learn from your peers’ real-world wins.<br><br>But what if we shared those stories in a way that’s not just informative — but creative, engaging, and fun?<br><br>Introducing Stellar-Seller and the Side-Qlik…<br>Your quarterly e-comic book spotlighting real Qlik sellers using AI to close more sales!<br><br>First issue coming soon.
+         </div>
+
+        <div class="right">
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/-okR_9N_kAg" title="Stellar Seller - Intro"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-      </div>
-    </div>  
+       </div>
+     </div>
+   </div>
 
 
-    <!-------------------------------------------------------------->
-    <!-- About >
-    <!-------------------------------------------------------------->
-    <!--
-    <div id="About_SalesAI" class="qlik_sheet">
-      <div class="Qlik-BG-content_noscroll">
-        <span class="close" onclick="closeAboutPopup()">&times;</span>
-        <div class="header-container">
-          <div class="avatar-container">
-            <img src="img/Sessions.png" alt="Demo Video" class="popup_title_icon" />
-          </div>
-          <div class="text-container">
-            <h2>About</h2>
-            <p>SalesAI</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    -->
+   <!-------------------------------------------------------------->
+   <!-- About >
+   <!-------------------------------------------------------------->
+   <!--
+   <div id="About_SalesAI" class="qlik_sheet">
+     <div class="Qlik-BG-content_noscroll">
+       <span class="close" onclick="closeAboutPopup()">&times;</span>
+       <div class="header-container">
+         <div class="avatar-container">
+           <img src="img/Sessions.png" alt="Demo Video" class="popup_title_icon" />
+         </div>
+         <div class="text-container">
+           <h2>About</h2>
+           <p>SalesAI</p>
+         </div>
+       </div>
+     </div>
+   </div>
+   -->
 <script>
 //=================================================================
       // Functions
       //=================================================================
+
+      // Menu toggle functionality
+      function toggleMenu() {
+        const menu = document.getElementById('dropdownMenu');
+        const toggle = document.getElementById('menuToggle');
+
+        menu.classList.toggle('active');
+        toggle.classList.toggle('active');
+      }
+
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const menu = document.getElementById('dropdownMenu');
+        const toggle = document.getElementById('menuToggle');
+
+        if (!toggle.contains(event.target) && !menu.contains(event.target)) {
+          menu.classList.remove('active');
+          toggle.classList.remove('active');
+        }
+      });
 
       function openUS_StatsPopup() {
         document.getElementById("US_stats").style.display = "block";
@@ -410,6 +406,7 @@
 
       function openVideo1Popup() {
           document.getElementById("video1Modal").style.display = "block";
+          toggleMenu(); // Close menu
       }
 
       function closeVideo1Popup() {
@@ -420,6 +417,7 @@
 
       function openVideo2Popup() {
           document.getElementById("video2Modal").style.display = "block";
+          toggleMenu();
       }
 
       function closeVideo2Popup() {
@@ -430,6 +428,7 @@
 
       function openVideo3Popup() {
           document.getElementById("video3Modal").style.display = "block";
+          toggleMenu();
       }
 
       function closeVideo3Popup() {
@@ -440,6 +439,7 @@
 
       function openVideo4Popup() {
           document.getElementById("video4Modal").style.display = "block";
+          toggleMenu();
       }
 
       function closeVideo4Popup() {
@@ -450,6 +450,7 @@
 
       function openStellarIntroPopup() {
           document.getElementById("StellarVideo1Modal").style.display = "block";
+          toggleMenu();
       }
 
       function CloseStellarIntroPopup() {
@@ -467,31 +468,33 @@
         document.getElementById("About_SalesAI").style.visibility = "hidden";
       }
 
-      function Background_Light() {   
+      function Background_Light() {
         document.body.style.backgroundColor= "white";
       }
 
-      function Background_Dark() {   
+      function Background_Dark() {
         document.body.style.backgroundColor= "black";
       }
 
       function toggleDivs() {
           var officialDiv = document.getElementById("assistant-official");
           var demoDiv = document.getElementById("assistant-demo");
+          var header = document.querySelector('.app-header');
+          var logo = document.getElementById("logo-image");
 
           if (document.getElementById("toggle-switch").checked) {
               // Show DEMO and hide official
               Background_Dark();
-              officialDiv.classList.remove('active');
+              header.classList.add('dark-mode');
+              logo.src = "img/Qlik Logo Trademark Negative-green RGB.png";
               officialDiv.classList.add('hidden');
               demoDiv.classList.remove('hidden');
-              demoDiv.classList.add('active');
           } else {
               // Show OFFICIAL and hide demo
               Background_Light();
+              header.classList.remove('dark-mode');
+              logo.src = "img/Qlik Logo R - 2 Color Positive RGB.png";
               officialDiv.classList.remove('hidden');
-              officialDiv.classList.add('active');
-              demoDiv.classList.remove('active');
               demoDiv.classList.add('hidden');
           }
       }
@@ -507,7 +510,9 @@
 
       function openAskDave() {
         window.open("https://qliktechnologies365.sharepoint.com/sites/askdave", "_blank");
+        toggleMenu();
       }
+
     </script>
   </body>
 </html>
