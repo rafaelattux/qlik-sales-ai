@@ -365,10 +365,10 @@ input:checked + .slider:before {
 /* ------------------------------------------- */
 
 .right-sidebar {
-  width: 300px;
+  width: 250px;
   background-image: url('../img/Sales AI Banner v3.jpg');
-  background-size: cover;
-  background-position: center;
+  background-size: 100% 100%;
+  background-position: center center;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
@@ -422,7 +422,7 @@ input:checked + .slider:before {
 
 @media screen and (max-width: 1024px) {
   .right-sidebar {
-    width: 280px;
+    width: 240px;
   }
 
   .stellar-text {
