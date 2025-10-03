@@ -365,7 +365,7 @@ input:checked + .slider:before {
 /* ------------------------------------------- */
 
 .right-sidebar {
-  width: 250px;
+  width: 350px;
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -383,14 +383,16 @@ input:checked + .slider:before {
   text-decoration: none;
   cursor: pointer;
   position: relative;
+  overflow: hidden;
 }
 
 .banner-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
+  height: auto;
   display: block;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .sidebar-content {
@@ -428,7 +430,12 @@ input:checked + .slider:before {
 
 @media screen and (max-width: 1024px) {
   .right-sidebar {
-    width: 240px;
+    width: 280px;
+  }
+
+  .banner-image {
+    width: 100%;
+    height: auto;
   }
 
   .stellar-text {
