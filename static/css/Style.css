@@ -55,10 +55,11 @@ a {
 
 .app-header.dark-mode .menu-toggle {
   color: #ffffff;
+  background: #009845;
 }
 
 .app-header.dark-mode .menu-toggle::after {
-  color: #cccccc;
+  color: #ffffff;
 }
 
 .app-header.dark-mode .toggle-label {
@@ -75,7 +76,8 @@ a {
 }
 
 .app-header.dark-mode .menu-toggle:hover {
-  background: #444;
+  background: #00803a;
+  box-shadow: 0 3px 6px rgba(0, 152, 69, 0.4);
 }
 
 .header-content {
@@ -135,10 +137,10 @@ a {
 }
 
 .menu-toggle {
-  background: transparent;
+  background: #009845;
   border: none;
-  color: #333333;
-  padding: 6px 12px;
+  color: #ffffff;
+  padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
@@ -147,18 +149,20 @@ a {
   gap: 6px;
   transition: all 0.3s ease;
   white-space: nowrap;
-  font-weight: 500;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 152, 69, 0.3);
 }
 
 .menu-toggle:hover {
-  background: #f0f0f0;
+  background: #00803a;
+  box-shadow: 0 3px 6px rgba(0, 152, 69, 0.4);
 }
 
 .menu-toggle::after {
   content: '▼';
   font-size: 10px;
   transition: transform 0.3s ease;
-  color: #666666;
+  color: #ffffff;
 }
 
 .menu-toggle.active::after {
